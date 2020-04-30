@@ -14,8 +14,50 @@ $db = new Database;
     <div class="row">
         <div class='col-md-8'>
 
-            <!-- Blog Entries Column -->
             <?php
+
+
+
+  switch (isset($_GET['index'])):
+
+    case 'login':
+      require_once('./login.php'); //transper the user to the login page
+      break;
+    case 'signup':
+        require_once('./signup.php'); //transper the user to the login page
+    break;
+    case 'editprofile':
+        require_once './editprofile.php';
+    break;
+    case 'logout':
+        require_once('./Logout.php'); //transper the user to the login page
+        break;
+    case 4:
+      require_once('./includes/add_post.php'); //transper the user to the login page
+      break;
+    case 5:
+      require('./post.php'); //transper the user to the login page
+      break;
+    case 6:
+      require('./comments.php'); //transper the user to the login page
+      break;
+      case 7:
+        require('./users.php'); //transper the user to the login page
+        break;
+    default:
+    if (!isset($_POST['search'])) {
+        $db->get_post('');
+    } else {
+
+        $db->get_post($_POST['search']);
+    }
+
+  endswitch;
+
+/*
+            if(isset($_GET['login'])){
+                require_once './login.php';
+            }
             if (isset($_GET['signup'])) {
                 require_once './signup.php';
             } else {
@@ -53,7 +95,7 @@ $db = new Database;
                     }
                 }
             }
-            ?>
+         */   ?>
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
@@ -63,5 +105,6 @@ $db = new Database;
     <!-- /.row -->
 
     <hr>
+    </div>
 
     <?php include "./includes/footer.php" ?>

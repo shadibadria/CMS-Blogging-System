@@ -28,15 +28,18 @@ $db = new Database;
           <?php if (!isset($_SESSION['username'])) {
 
             echo "
-               <li><a href='#'>signup</a></li>
-               <li><a href='#'>sign in</a></li>
-
+               <li><a href=''./index.php?index=signup''>signup</a></li>
+               <li><a href='./index.php?index=login'>sign in</a></li>
                ";
           } else {
 
             echo "
-                <li><a href='#'>welcome " . $_SESSION['username'] . "
-                </a></li>
+
+            <li>
+            <form action='./Logout.php' method='post'>
+            <button class='btn btn-danger' name='logout' type='submit'>Logout </button>
+            </form>
+            </li>
 
                 ";
           }
