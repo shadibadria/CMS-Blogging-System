@@ -39,6 +39,7 @@ $db = new Database;
                 case 'id':
                     $db->get_postinfo($_GET['id']);
                     break;
+                    
                 default:
                     if (!isset($_POST['search'])) {
                         $db->get_post('');

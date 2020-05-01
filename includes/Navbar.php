@@ -23,7 +23,7 @@ session_start();
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="the-navbar-collapse">
       <ul class="nav navbar-nav navbar">
-      <li  class="active"><a href="./index.php">Blog</a></li>
+      <li  class="active"><a href="./index.php">Home</a></li>
       <?php if (isset($_SESSION['username'])) {
       echo "<li  ><a href='./admin'>Admin</a></li>'";
 
@@ -33,17 +33,14 @@ session_start();
           <?php if (!isset($_SESSION['username'])) {
 
             echo "
-               <li><a href=''./index.php?index=signup''>signup</a></li>
+               <li><a href='./index.php?index=signup''>signup</a></li>
                <li><a href='./index.php?index=login'>sign in</a></li>
                ";
           } else {
 
             echo "
-            <li>
-            <form action='./Logout.php' method='post'>
-            <button class='btn btn-danger rounded-circle' name='logout' type='submit'>Logout </button>
-            </form>
-            </li>
+            <li class='btn-danger'><a href='./Logout.php'>Logout</a></li>
+
                 ";
           }
 

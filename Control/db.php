@@ -332,36 +332,48 @@ class Database
             $flag = 1;
 
             echo " 
-          
-         
-          
-          <!-- First Blog Post -->
-          <h2>
-              <a href='?index=id&id=" . $line['post_id'] . "'>" . $line['post_title'] . "</a>
-          </h2>
-
-          <p class='lead'>
-              by <a href='index.php'>" . $line['post_author'] . "</a>
-          </p>
-          <p><span class='glyphicon glyphicon-time'></span> Posted on " . $line['post_date'] . "</p>
-          <hr>
-          <img  class='img-responsive' src='./images/" . $line['post_image'] . "' alt=''>
-          <hr>
-          <p>" . substr($line["post_content"], 0, 50)
+          <article class='post-item'>
+          <div class='post-item-image'>
+              <a href='post.html'>
+                  <img style='width:100%; height:500px' src='./images/" . $line['post_image'] . "' alt='>
+              </a>
+          </div>
+          <div class='post-item-body'>
+              <div class='padding-10'>
+                  <h2> <a href='?index=id&id=" . $line['post_id'] . "'>" . $line['post_title'] . "</a>
+                  </a></h2>
+                  <p>" . substr($line["post_content"], 0, 50)
                 . " ... </p>
-
-          <form action='?index=id&id=" . $line['post_id'] . "' method='post'>
-          <button class='btn btn-primary' type='submit'>Read More <span class='glyphicon glyphicon-chevron-right'></span>
-       </button>
-       </form>
-          <hr>
-
+              </div>
+              <div class='post-meta padding-10 clearfix'>
+                  <div class='pull-left'>
+                      <ul class='post-meta-group'>
+                          <li><i class='fa fa-user'></i><a href='#'> " . $line['post_author'] . "</a></li>
+                          <li><i class='fa fa-clock-o'></i><time> Posted on " . $line['post_date'] . "</time></li>
+                          <li><i class='fa fa-comments'></i><a href='#'>".$this->count_comments($line['post_id'])." Comments</a></li>
+                      </ul>
+                  </div>
+                  <div class='pull-right'>
+                      <a href='?index=id&id=" . $line['post_id'] . "'>Continue Reading &raquo;</a>
+                  </div>
+              </div>
+          </div>
+      </article>
+   
       ";
         }
         if ($flag == 0) {
             echo "<div class=\"alert alert-success\" role=\"alert\">
             No match </div>";
         }
+        echo "
+        <nav>
+        <ul class='pager'>
+          <li class='previous disabled'><a href='#'><span aria-hidden='true'>&larr;</span> Newer</a></li>
+          <li class='next'><a href='#'>Older <span aria-hidden='true'>&rarr;</span></a></li>
+        </ul>
+        </nav>
+        ";
         $this->disconnect();
     }
     //get all posts  as
@@ -402,6 +414,7 @@ class Database
 
         $this->disconnect();
     }
+    
     //get all posts  as
     public function get_postname($id)
     {
@@ -471,7 +484,19 @@ class Database
     /***********************************************/
     //  comments
     /***************************************************/
+    
 
+    public function  count_comments($id)
+    {
+        $this->connect();
+        $searchResult = $this->connection->query("SELECT * FROM comments WHERE comment_post_id='$id' ");
+        $count=0;
+        while ($line = $searchResult->fetch(PDO::FETCH_ASSOC)) {
+            $count++;
+        }
+        $this->disconnect();
+        return $count;
+    }
     public function  get_allcomments()
     {
         $this->connect();

@@ -41,36 +41,25 @@ if (isset($_POST['create_user'])) {
 ?>
 
 
-<h1 class="page-header">
-    SignUp
-</h1>
-<form name="myform" action="#" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="firstname">Firstname</label>
-        <input maxlength="10" value="<?php if (isset($_POST["firstname"])) echo $_POST["firstname"]; ?>" type="text" class="form-control" name="firstname">
-    </div>
-    <div class="form-group">
-        <label for="lastname">Lastname</label>
-        <input maxlength="10" value="<?php if (isset($_POST["lastname"])) echo $_POST["lastname"]; ?>" type="text" class="form-control" name="lastname">
-    </div>
 
-    <div class="form-group">
-        <label for="username">username</label>
-        <input maxlength="10" type="text" value="<?php if (isset($_POST["username"])) echo $_POST["username"]; ?>" class="form-control" name="username">
+<div class="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1 m-auto">
+      </div>
+      <div class="col-md-5 m-auto">
+        <h1 class="display-4 text-center">Sign  up</h1>
+        <p class="lead text-center">Sign in to your account</p>
+        <form action='#' method='post'>
+          <div class="form-group">
+            <input type="email" class="form-control form-control-lg" placeholder="Email Address" name="email" />
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" />
+          </div>
+          <input type="submit" name="login" class="btn btn-info btn-block mt-4" />
+        </form>
+      </div>
     </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input maxlength="30" type="email" value="<?php if (isset($_POST["email"])) echo $_POST["email"]; ?>" class="form-control" name="email">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input maxlength="10" type="password" class="form-control" name="password">
-    </div>
-    <div class="form-group">
-        <label for="repassword">Re enter Password</label>
-        <input maxlength="10" type="password" class="form-control" name="repassword">
-    </div>
-    <div class="form-group">
-        <input class="btn btn-primary" type="submit" name="create_user" value="Update User">
-    </div>
-</form>
+  </div>
+</div>
