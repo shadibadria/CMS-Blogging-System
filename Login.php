@@ -5,31 +5,25 @@ require_once "./Models/user.php";
 
 
 
-
-
-
-
-
-
-
-if (isset($_POST['login'])) {
-  checkData();
-}
 require_once "./Control/db.php";
 
 require_once './Models/user.php';
 
 function checkData() // function to check the user inin info
 {
+  
+
   $db = new Database;
   $temp = $db->login($_POST['email'], $_POST['password']);
   if ($temp != false) {
+   
     $user = $db->getuserbyemail($_POST['email']);
     $_SESSION['role'] = $user->getrole();
     $_SESSION['userid'] = $user->getid();
     $_SESSION['username'] = $user->getusername();
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['try'] = 'true';
+
     header("refresh:0;url='./index.php'");
   } else {
     $_SESSION['try'] = 'false';
@@ -37,11 +31,12 @@ function checkData() // function to check the user inin info
 }
 
 if (isset($_POST['login'])) {
-
   if (isset($_SESSION['try']) == 'false') {
     echo "<div class=\"alert alert-danger\" role=\"alert\">
           Invalid Password / Email</div>";
     unset($_SESSION['try']);
+  }else{
+    checkData();
   }
 }
 ?>
@@ -56,7 +51,7 @@ if (isset($_POST['login'])) {
       <div class="col-md-5 m-auto">
 
         <h1 class="display-4 text-center">Log In</h1>
-        <p class="lead text-center">Sign in to your  account</p>
+        <p class="lead text-center">Sign in to your account</p>
         <form action='#' method='post'>
           <div class="form-group">
             <input type="email" class="form-control form-control-lg" placeholder="Email Address" name="email" />

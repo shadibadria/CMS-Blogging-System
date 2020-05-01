@@ -15,55 +15,41 @@ $db = new Database;
         <div class='col-md-8'>
 
             <?php
-
-
-
-  switch (isset($_GET['index'])):
-
-    case 'login':
-      require_once('./login.php'); //transper the user to the login page
-      break;
-    case 'signup':
-        require_once('./signup.php'); //transper the user to the login page
-    break;
-    case 'editprofile':
-        require_once './editprofile.php';
-    break;
-    case 'logout':
-        require_once('./Logout.php'); //transper the user to the login page
-        break;
-    case 4:
-      require_once('./includes/add_post.php'); //transper the user to the login page
-      break;
-    case 5:
-      require('./post.php'); //transper the user to the login page
-      break;
-    case 6:
-      require('./comments.php'); //transper the user to the login page
-      break;
-      case 7:
-        require('./users.php'); //transper the user to the login page
-        break;
-    default:
-    if (!isset($_POST['search'])) {
-        $db->get_post('');
-    } else {
-
-        $db->get_post($_POST['search']);
-    }
-
-  endswitch;
-
-/*
-            if(isset($_GET['login'])){
-                require_once './login.php';
+            $choice = '';
+            if (isset($_GET['index'])) {
+                $choice = $_GET['index'];
             }
-            if (isset($_GET['signup'])) {
-                require_once './signup.php';
-            } else {
-                if (isset($_GET['editprofile'])) {
+            switch ($choice):
+
+                case 'login':
+                    require_once('./login.php'); //transper the user to the login page
+                    break;
+                case 'signup':
+                    require_once('./signup.php'); //transper the user to the login page
+                    break;
+                case 'editprofile':
                     require_once './editprofile.php';
-                } else {
+                    break;
+                case 'logout':
+                    require_once('./Logout.php'); //transper the user to the login page
+                    break;
+                case "cat":
+                    $db->get_postbycategory($_GET['cat']);
+                    break;
+                case 'id':
+                    $db->get_postinfo($_GET['id']);
+                    break;
+                default:
+                    if (!isset($_POST['search'])) {
+                        $db->get_post('');
+                    } else {
+
+                        $db->get_post($_POST['search']);
+                    }
+            endswitch;
+
+            /*
+           
                     if (isset($_POST['create_comment'])) {
 
                         $comment = new Comment;
@@ -105,6 +91,6 @@ $db = new Database;
     <!-- /.row -->
 
     <hr>
-    </div>
+</div>
 
-    <?php include "./includes/footer.php" ?>
+<?php include "./includes/footer.php" ?>

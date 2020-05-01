@@ -1,8 +1,8 @@
 <?php
 require_once "./Control/db.php";
-require_once "./admin/page_choice.php";
 
 $db = new Database;
+session_start();
 ?>
 <header>
 
@@ -22,7 +22,7 @@ $db = new Database;
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="the-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Blog</a></li>
+          <li class="active"><a href="./index.php">Blog</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
           <?php if (!isset($_SESSION['username'])) {
@@ -37,7 +37,7 @@ $db = new Database;
 
             <li>
             <form action='./Logout.php' method='post'>
-            <button class='btn btn-danger' name='logout' type='submit'>Logout </button>
+            <button class='btn btn-danger rounded-circle' name='logout' type='submit'>Logout </button>
             </form>
             </li>
 

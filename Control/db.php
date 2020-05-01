@@ -54,7 +54,7 @@ class Database
         while ($line = $searchResult->fetch(PDO::FETCH_ASSOC)) {
             echo " 
             <li>
-            <a href='./index.php?cat=" . $line['cat_id'] . "'class='fa fa-angle-right'/> " . strtoupper($line['cat_title']) . "</a>
+            <a href='?index=cat&cat=" . $line['cat_id'] . "'class='fa fa-angle-right'/> " . strtoupper($line['cat_title']) . "</a>
             <span class='badge pull-right'>10</span>
 
                </li>
