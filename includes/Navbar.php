@@ -16,15 +16,20 @@ session_start();
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">MyBlog</a>
+        <a class="navbar-brand" href="index.php">MyBlog</a>
+        
       </div>
-
+      
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="the-navbar-collapse">
+      <ul class="nav navbar-nav navbar">
+      <li  class="active"><a href="./index.php">Blog</a></li>
+      <?php if (isset($_SESSION['username'])) {
+      echo "<li  ><a href='./admin'>Admin</a></li>'";
+
+      }?>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="./index.php">Blog</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
           <?php if (!isset($_SESSION['username'])) {
 
             echo "
@@ -34,13 +39,11 @@ session_start();
           } else {
 
             echo "
-
             <li>
             <form action='./Logout.php' method='post'>
             <button class='btn btn-danger rounded-circle' name='logout' type='submit'>Logout </button>
             </form>
             </li>
-
                 ";
           }
 

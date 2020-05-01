@@ -36,54 +36,22 @@ $db = new Database;
 
         <div class="widget">
             <div class="widget-heading">
-                <h4>Today  Posts</h4>
+                <h4>Today Posts</h4>
             </div>
             <div class="widget-body">
                 <ul class="popular-posts">
-                    <li>
-                        <div class="post-image">
-                            <a href="#">
-                                <img src="img/Post_Image_5_thumb.jpg" />
-                            </a>
-                        </div>
-                        <div class="post-body">
-                            <h6><a href="#">Blog Post #5</a></h6>
-                            <div class="post-meta">
-                                <span>36 minutes ago</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="post-image">
-                            <a href="#">
-                                <img src="img/Post_Image_4_thumb.jpg" />
-                            </a>
-                        </div>
-                        <div class="post-body">
-                            <h6><a href="#">Blog Post #4</a></h6>
-                            <div class="post-meta">
-                                <span>36 minutes ago</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="post-image">
-                            <a href="#">
-                                <img src="img/Post_Image_3_thumb.jpg" />
-                            </a>
-                        </div>
-                        <div class="post-body">
-                            <h6><a href="#">Blog Post #3</a></h6>
-                            <div class="post-meta">
-                                <span>36 minutes ago</span>
-                            </div>
-                        </div>
-                    </li>
+
+                    <ul class="popular-posts">
+                     
+                    <?php  $db->get_todayposts(); ?>
+ 
+                                
+
                 </ul>
             </div>
         </div>
 
-     
+
     </aside>
 
 

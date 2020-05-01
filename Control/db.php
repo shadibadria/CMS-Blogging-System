@@ -47,15 +47,33 @@ class Database
     //** Categories**//
 
     //get  categories as li
+    public function get_categorycount($id)
+    {
+        $this->connect();
+        $counter = 0;
+
+        $searchResult = $this->connection->query("SELECT * FROM posts WHERE post_category_id='$id' ");
+        while ($line = $searchResult->fetch(PDO::FETCH_ASSOC)) {
+            $counter++;
+        }
+        $this->disconnect();
+        return $counter;
+    }
     public function get_category()
     {
         $this->connect();
         $searchResult = $this->connection->query("SELECT * FROM categories ");
+        echo " 
+        <li>
+        <a href='index.php'class=' fa fa-angle-right'/> ALL CATEGORIES</a>
+           </li>
+        ";
         while ($line = $searchResult->fetch(PDO::FETCH_ASSOC)) {
+
             echo " 
             <li>
             <a href='?index=cat&cat=" . $line['cat_id'] . "'class='fa fa-angle-right'/> " . strtoupper($line['cat_title']) . "</a>
-            <span class='badge pull-right'>10</span>
+            <span class='badge pull-right'>" . $this->get_categorycount($line['cat_id']) . "</span>
 
                </li>
             ";
@@ -170,15 +188,16 @@ class Database
             $flag = 1;
 
             echo " 
-          
            
            <!-- First Blog Post -->
            <h2>
-               <a href='#'>" . $line['post_title'] . "</a>
+           
+
+               <a href='?index=id&id=" . $line['post_id'] . "'>" . $line['post_title'] . "</a>
            </h2>
  
            <p class='lead'>
-               by <a href='index.php'>" . $line['post_author'] . "</a>
+               by <a href=''>" . $line['post_author'] . "</a>
            </p>
            <p><span class='glyphicon glyphicon-time'></span> Posted on " . $line['post_date'] . "</p>
            <hr>
@@ -187,7 +206,7 @@ class Database
            <p>" . substr($line["post_content"], 0, 50)
                 . " ... </p>
  
-           <form action='./index.php ?id=" . $line['post_id'] . "' method='post'>
+           <form action='?index=id&id=" . $line['post_id'] . "' method='post'>
            <button class='btn btn-primary' type='submit'>Read More <span class='glyphicon glyphicon-chevron-right'></span>
         </button>
         </form>
@@ -253,17 +272,50 @@ class Database
                 <p class='lead'>"
                 .
                 $line["post_content"]
-
                 . " </p>
                 <hr>
-
                 ";
         }
         $this->get_comments($postid);
 
         $this->disconnect();
     }
+    //** Posts**//
+    public function get_todayposts()
+    {
+        $this->connect();
+        $date = date("Y-m-d");
+        $searchResult = $this->connection->query("SELECT * FROM posts WHERE post_date ='$date'");
+        $flag = 0;
+        while ($line = $searchResult->fetch(PDO::FETCH_ASSOC)) {
+            $flag = 1;
+            echo "
+            
+            <li>
+            <div class='post-image'>
+                <a href='?index=id&id=" . $line['post_id'] . "'>
+                    <img style='width:100px; height:50px'src='./images/" . $line['post_image'] . "' />
+                </a>
+            </div>
+            <div class='post-body'>
+                <h6><a href='?index=id&id=" . $line['post_id'] . "'>" . $line['post_title'] . "</a></h6>
+                <div class='post-meta'>
+                    <span>By " . $line['post_author'] . "</span>
+                </div>
+            </div>
+        </li>
+               ";
+        }
+        if ($flag == 0) {
+            echo "
+        <li>
+            no posts today 
+    </li>
+                ";
+        }
 
+        $this->disconnect();
+    }
 
     //get all posts 
     public function get_post($search)
@@ -285,7 +337,7 @@ class Database
           
           <!-- First Blog Post -->
           <h2>
-              <a href='./index.php ?id=" . $line['post_id'] . "'>" . $line['post_title'] . "</a>
+              <a href='?index=id&id=" . $line['post_id'] . "'>" . $line['post_title'] . "</a>
           </h2>
 
           <p class='lead'>
@@ -298,7 +350,7 @@ class Database
           <p>" . substr($line["post_content"], 0, 50)
                 . " ... </p>
 
-          <form action='./index.php ?id=" . $line['post_id'] . "' method='post'>
+          <form action='?index=id&id=" . $line['post_id'] . "' method='post'>
           <button class='btn btn-primary' type='submit'>Read More <span class='glyphicon glyphicon-chevron-right'></span>
        </button>
        </form>
