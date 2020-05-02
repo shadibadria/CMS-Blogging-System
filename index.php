@@ -4,7 +4,7 @@ require_once "./Control/db.php";
 require_once './Models/comments.php';
 $db = new Database;
 
-
+session_start();
 ?>
 <?php include "./includes/header.php" ?>
 <!-- Navigation -->

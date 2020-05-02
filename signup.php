@@ -8,35 +8,35 @@ require_once "./Control/db.php";
 <?php
 if (isset($_POST['create_user'])) {
 
-    if (
-        strlen($_POST['username']) == 0  ||
-        strlen($_POST['password']) == 0  ||
-        strlen($_POST['email']) == 0     ||
-        strlen($_POST['firstname']) == 0 ||
-        strlen($_POST['lastname']) == 0
+  if (
+    strlen($_POST['username']) == 0  ||
+    strlen($_POST['password']) == 0  ||
+    strlen($_POST['email']) == 0     ||
+    strlen($_POST['firstname']) == 0 ||
+    strlen($_POST['lastname']) == 0
 
-    ) {
-        echo "<div class=\"alert alert-danger\" role=\"alert\">
+  ) {
+    echo "<div class=\"alert alert-danger\" role=\"alert\">
         must not be empty </div>";
-    } else {
-        if ($_POST['password'] != $_POST['repassword']) {
-            echo "<div class=\"alert alert-danger\" role=\"alert\">
+  } else {
+    if ($_POST['password'] != $_POST['repassword']) {
+      echo "<div class=\"alert alert-danger\" role=\"alert\">
            password dont match </div>";
-        } else {
+    } else {
 
-            $db = new Database;
-            $user = new User;
+      $db = new Database;
+      $user = new User;
 
-            $user->setpassword($_POST['password']);
-            $user->setusername($_POST['username']);
-            $user->setfirstname($_POST['firstname']);
-            $user->setlastname($_POST['lastname']);
-            $user->setemail($_POST['email']);
-            $user->setrole('subscriber');
+      $user->setpassword($_POST['password']);
+      $user->setusername($_POST['username']);
+      $user->setfirstname($_POST['firstname']);
+      $user->setlastname($_POST['lastname']);
+      $user->setemail($_POST['email']);
+      $user->setrole('subscriber');
 
-            $db->add_user($user);
-        }
+      $db->add_user($user);
     }
+  }
 }
 ?>
 
@@ -48,16 +48,37 @@ if (isset($_POST['create_user'])) {
       <div class="col-md-1 m-auto">
       </div>
       <div class="col-md-5 m-auto">
-        <h1 class="display-4 text-center">Sign  up</h1>
+        <h1 class="display-4 text-center">Sign up</h1>
         <p class="lead text-center">Sign in to your account</p>
         <form action='#' method='post'>
           <div class="form-group">
-            <input type="email" class="form-control form-control-lg" placeholder="Email Address" name="email" />
+            <label for="firstname">Firstname</label>
+            <input maxlength="10" value="<?php if (isset($_POST["firstname"])) echo $_POST["firstname"]; ?>" type="text" class="form-control" name="firstname">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" />
+            <label for="lastname">Lastname</label>
+            <input maxlength="10" value="<?php if (isset($_POST["lastname"])) echo $_POST["lastname"]; ?>" type="text" class="form-control" name="lastname">
           </div>
-          <input type="submit" name="login" class="btn btn-info btn-block mt-4" />
+
+          <div class="form-group">
+            <label for="username">username</label>
+            <input maxlength="10" type="text" value="<?php if (isset($_POST["username"])) echo $_POST["username"]; ?>" class="form-control" name="username">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input maxlength="30" type="email" value="<?php if (isset($_POST["email"])) echo $_POST["email"]; ?>" class="form-control" name="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input maxlength="10" type="password" class="form-control" name="password">
+          </div>
+          <div class="form-group">
+            <label for="repassword">Re enter Password</label>
+            <input maxlength="10" type="password" class="form-control" name="repassword">
+          </div>
+          <div class="form-group">
+            <input type="submit"value="SignUp" name="create_user" class="btn btn-info btn-block mt-4" />
+          </div>
         </form>
       </div>
     </div>

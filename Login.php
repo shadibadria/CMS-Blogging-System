@@ -11,12 +11,12 @@ require_once './Models/user.php';
 
 function checkData() // function to check the user inin info
 {
-  
+
 
   $db = new Database;
   $temp = $db->login($_POST['email'], $_POST['password']);
   if ($temp != false) {
-   
+
     $user = $db->getuserbyemail($_POST['email']);
     $_SESSION['role'] = $user->getrole();
     $_SESSION['userid'] = $user->getid();
@@ -35,7 +35,7 @@ if (isset($_POST['login'])) {
     echo "<div class=\"alert alert-danger\" role=\"alert\">
           Invalid Password / Email</div>";
     unset($_SESSION['try']);
-  }else{
+  } else {
     checkData();
   }
 }

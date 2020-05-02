@@ -1,8 +1,7 @@
 <?php
 require_once "./Control/db.php";
-
 $db = new Database;
-session_start();
+
 ?>
 <header>
 
