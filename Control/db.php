@@ -367,12 +367,7 @@ class Database
             No match </div>";
         }
         echo "
-        <nav>
-        <ul class='pager'>
-          <li class='previous disabled'><a href='#'><span aria-hidden='true'>&larr;</span> Newer</a></li>
-          <li class='next'><a href='#'>Older <span aria-hidden='true'>&rarr;</span></a></li>
-        </ul>
-        </nav>
+    
         ";
         $this->disconnect();
     }
@@ -548,12 +543,14 @@ class Database
 
     public function get_comments($id)
     {
+        echo "       <h2>Leave a Comment: </h2>
+        ";
         if (isset($_SESSION['email'])) {
 
             echo "
     <div class='well'>
-    <h4>Leave a Comment:</h4>
-    <form action='./index.php?id=" . $id . "' method='post' role='form'>
+  
+    <form action='./index.php?index=addcomment&postid=" . $id . "' method='post' role='form'>
       
         <div class='form-group'>
             <label for='comment'>Your Comment</label>
@@ -570,9 +567,12 @@ class Database
         }
         $this->connect();
         $searchResult = $this->connection->query("SELECT * FROM comments WHERE comment_post_id='$id' AND comment_status='approved' ");
+        echo "       <h2>Comments: </h2>
+        <hr>";
         while ($line = $searchResult->fetch(PDO::FETCH_ASSOC)) {
             echo "
-    <hr>
+     
+    
     <div class='media'>
         <a class='pull-left' href='#'>
             <img class='media-object' src='http://placehold.it/64x64' alt=''>

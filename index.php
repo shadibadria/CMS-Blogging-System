@@ -7,9 +7,7 @@ $db = new Database;
 session_start();
 ?>
 <?php include "./includes/header.php" ?>
-<!-- Navigation -->
 <?php include "./includes/Navbar.php" ?>
-<!-- Page Content -->
 <div class="container">
     <div class="row">
         <div class='col-md-8'>
@@ -39,7 +37,10 @@ session_start();
                 case 'id':
                     $db->get_postinfo($_GET['id']);
                     break;
-                    
+                case 'addcomment':
+                    add_comment();
+                    break;
+
                 default:
                     if (!isset($_POST['search'])) {
                         $db->get_post('');
@@ -49,40 +50,26 @@ session_start();
                     }
             endswitch;
 
-            /*
-           
-                    if (isset($_POST['create_comment'])) {
 
-                        $comment = new Comment;
-
-                        $comment->setcomment_author($_SESSION['username']);
-                        $comment->setcomment_email($_SESSION['email']);
-                        $comment->setcomment_content($_POST['comment_content']);
-                        $comment->setcomment_status('pending');
-                        $comment->setcomment_date(date("Y-m-d"));
-                        $comment->setpost_id($_GET['id']);
-
-
-                        $db->add_comment($comment);
-                    }
-
-                    if (isset($_GET['cat'])) {
-                        $db->get_postbycategory($_GET['cat']);
-                    } else {
-                        if (isset($_GET['id'])) {
-                            $db->get_postinfo($_GET['id']);
-                        } else {
-                            if (!isset($_POST['search'])) {
-                                $db->get_post('');
-                            } else {
-
-                                $db->get_post($_POST['search']);
-                            }
-                        }
-                    }
+            function add_comment()
+            {
+                if (isset($_POST['create_comment'])) {
+                    $db = new Database;
+                    $comment = new Comment;
+                    $comment->setcomment_author($_SESSION['username']);
+                    $comment->setcomment_email($_SESSION['email']);
+                    $comment->setcomment_content($_POST['comment_content']);
+                    $comment->setcomment_status('pending');
+                    $comment->setcomment_date(date("Y-m-d"));
+                    $comment->setpost_id($_GET['postid']);
+                    $db->add_comment($comment);
+                    header("refresh:0;url='./index.php'");
                 }
             }
-         */   ?>
+
+
+
+            ?>
         </div>
 
         <!-- Blog Sidebar Widgets Column -->

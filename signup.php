@@ -49,7 +49,7 @@ if (isset($_POST['create_user'])) {
       </div>
       <div class="col-md-5 m-auto">
         <h1 class="display-4 text-center">Sign up</h1>
-        <p class="lead text-center">Sign in to your account</p>
+        <p class="lead text-center">Create your account</p>
         <form action='#' method='post'>
           <div class="form-group">
             <label for="firstname">Firstname</label>
@@ -77,7 +77,7 @@ if (isset($_POST['create_user'])) {
             <input maxlength="10" type="password" class="form-control" name="repassword">
           </div>
           <div class="form-group">
-            <input type="submit"value="SignUp" name="create_user" class="btn btn-info btn-block mt-4" />
+            <input type="submit" value="SignUp" name="create_user" class="btn btn-info btn-block mt-4" />
           </div>
         </form>
       </div>

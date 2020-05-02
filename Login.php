@@ -3,12 +3,6 @@
 require_once "./Control/db.php";
 require_once "./Models/user.php";
 
-
-
-require_once "./Control/db.php";
-
-require_once './Models/user.php';
-
 function checkData() // function to check the user inin info
 {
 
