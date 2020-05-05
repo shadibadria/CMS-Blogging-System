@@ -1,6 +1,6 @@
 # CMS-Blogging-System
 
-<h1>USED : </h1>
+<h3>technologies used  : </h3>
 <ul>
 <li>PHP 7</li>
 <li>OOP </li>
