@@ -1,3 +1,8 @@
 # CMS-Blogging-System
 
-on construction
+<h1>USED : </h1>
+<ul>
+<li>PHP 7</li>
+<li>OOP </li>
+<li>MYSQL </li>
+ </ul>
