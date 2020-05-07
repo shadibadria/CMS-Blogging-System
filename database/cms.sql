@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: מאי 05, 2020 בזמן 05:33 PM
+-- Generation Time: מאי 07, 2020 בזמן 11:18 AM
 -- גרסת שרת: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -130,12 +130,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_password`, `user_username`, `user_firstname`, `user_lastname`, `user_email`, `user_image`, `user_role`, `randsalt`) VALUES
-(24, '$2y$10$M8kYVNrPg8H/qLp3F/3/T.VRKlRZzSiI0wJf8nw5crI8tuG5zcRDK', 'shadi', 'shadi', 'badria', 'shadibadria@gmail.com', '', 'admin', ''),
+(24, '$2y$10$LL6zsWUdYIjPN4uW7KNup.Em1mwebmAb7FpISXwXA2NEoNMyEfREC', 'admin', 'admin', 'aa', 'admin@gmail.com', '', 'admin', ''),
 (25, '$2y$10$y4TsrKMOL/H/Psem6ko1OuOpL8u6qbMpU.JVmhIV.pPw00NyRIBlK', 'ayava2142', 'Alayna ', 'Chang', 'Chang@gmail.com', '', 'subscriber', ''),
 (26, '$2y$10$vi3U6hf/gVIoRTUcDy9VCuVRqfPPd3FDcMA320v5F5jF4tQz8hLZq', 'Marshall', 'Kajetan', 'Marshall', 'Kajetan@gmail.com', '', 'subscriber', ''),
 (27, '$2y$10$ViFpmOB0G5bGJ.61zIEI5e2nOMwz77SSIL9CtM2Y8xWtPANU9IMD6', 'Kavanagh', 'Victor ', 'Kavanagh', 'Kavanagh@gmail.com', '', 'subscriber', ''),
 (28, '$2y$10$77Q/KuYgVigj8BSyisZHbeXySQG6mxzsHV4xiG9KGE0RzS/Wc7C1W', 'Forster', 'Jaden ', 'Forster', 'Forster@gmail.com', '', 'subscriber', ''),
-(29, '$2y$10$E1El7c7w0yj7Ejeon0lzDOoRuMrgZCVEop.745PWML1WIv4B3NNQe', 'Ferguson', 'Anushka', 'Ferguson', 'shadi123@gmail.com', '', 'subscriber', ''),
+(29, '$2y$10$w8KgvUUxYL.E.hD5b8hZeeMbAdWP6l6JFKnHaWSuGEE80Muh1n2Ri', 'Ferguson', 'Anushka', 'Ferguson', 'subscriber@gmail.com', '', 'subscriber', ''),
 (30, '$2y$10$c76AwqKqsbo0MjDbF2xB2.su2/xgakW7s1HI2Kd3vZQz.eCIBnAdS', 'shadi badr', 'shadi', 'badria', 'shadi5@gmail.com', '', 'subscriber', '');
 
 --
