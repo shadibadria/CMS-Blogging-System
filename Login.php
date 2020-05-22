@@ -6,7 +6,6 @@ require_once "./Models/user.php";
 function checkData() // function to check the user inin info
 {
 
-
   $db = new Database;
   $temp = $db->login($_POST['email'], $_POST['password']);
   if ($temp != false) {
@@ -25,6 +24,7 @@ function checkData() // function to check the user inin info
 }
 
 if (isset($_POST['login'])) {
+
   if (isset($_SESSION['try']) == 'false') {
     echo "<div class=\"alert alert-danger\" role=\"alert\">
           Invalid Password / Email</div>";

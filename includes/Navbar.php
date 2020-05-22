@@ -3,8 +3,8 @@ require_once "./Control/db.php";
 $db = new Database;
 
 ?>
-<header>
 
+<header>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,7 +24,7 @@ $db = new Database;
       <ul class="nav navbar-nav navbar">
       <li  class="active"><a href="./index.php">Home</a></li>
       <?php if (isset($_SESSION['username'])) {
-      echo "<li  ><a href='./admin'>Admin</a></li>'";
+      echo "<li  ><a href='./admin/index.php?page=1'>Admin</a></li>'";
 
       }?>
         </ul>

@@ -1,17 +1,19 @@
 
 
-<div id="page-wrapper">
-    <div class="container-fluid">
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Welcome to Dashboard
-                    <small> <?php echo $_SESSION['username']?></small>
-                </h1>
-            </div>
-        </div>
+  <!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dasbhboard
+      </h1>
+      <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+      </ol>
+    </section>
 
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-primary">
@@ -97,6 +99,8 @@
                         </div>
                     </a>
                 </div>
-            </div>
-            
         </div>
+      <!-- ./row -->
+    </section>
+    <!-- /.content -->
+  </div>
